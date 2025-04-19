@@ -1,71 +1,21 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>M VPN — Перенаправление</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      height: 100vh;
-      background: url('https://q1ab.github.io/redirect/background.png') no-repeat center center;
-      background-size: cover;
-      background-attachment: scroll;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    .overlay {
-      background: rgba(0, 0, 0, 0.4);
-      padding: 30px 40px;
-      border-radius: 16px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-      color: #fff;
-      text-align: center;
-      animation: fadeIn 1.5s ease-in-out;
-    }
-
-    .overlay h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-      letter-spacing: 1px;
-      color: #ffffff;
-    }
-
-    .overlay p {
-      font-size: 1.2rem;
-      opacity: 0.9;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
-  <script>
-    window.onload = function () {
-      const params = new URLSearchParams(window.location.search);
-      const config = params.get("config");
-      if (config) {
-        window.location.href = config;
-      } else {
-        document.querySelector('.overlay p').textContent = "❌ Не удалось перенаправить. Неверная ссылка.";
-      }
-    };
-  </script>
+    <meta charset="UTF-8">
+    <title>M VPN</title>
+    <script>
+        window.onload = function () {
+            const params = new URLSearchParams(window.location.search);
+            const config = params.get('config');
+            if (config) {
+                window.location.href = config;
+            } else {
+                document.body.innerText = "Неверная ссылка.";
+            }
+        };
+    </script>
 </head>
 <body>
-  <div class="overlay">
-    <h1>⏳ Перенаправление...</h1>
-    <p>Пожалуйста, подождите пару секунд</p>
-  </div>
+    Перенаправление...
 </body>
 </html>
