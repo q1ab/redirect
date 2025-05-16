@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Генератор ссылок</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+      width: 100%;
+    }
+    .link-container {
+      margin-top: 20px;
+    }
+    .link-box {
+      margin-bottom: 20px;
+    }
+    .link {
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  <h1>Генератор ссылок</h1>
+  <input type="text" id="textInput" placeholder="Введите текст...">
+
+  <div class="link-container">
+    <div class="link-box">
+      <strong>V2rayTun:</strong>
+      <p id="v2rayLink" class="link"></p>
+      <button onclick="copyToClipboard('v2rayLink')">Скопировать V2rayTun</button>
+    </div>
+    <div class="link-box">
+      <strong>Streisand:</strong>
+      <p id="streisandLink" class="link"></p>
+      <button onclick="copyToClipboard('streisandLink')">Скопировать Streisand</button>
+    </div>
+  </div>
+
+  <script>
+    const input = document.getElementById('textInput');
+    const v2rayLink = document.getElementById('v2rayLink');
+    const streisandLink = document.getElementById('streisandLink');
+
+    input.addEventListener('input', () => {
+      const value = encodeURIComponent(input.value.trim());
+      if (value) {
+        v2rayLink.textContent = `https://q1ab.github.io/redirect/url.html?config=v2raytun://import/https://sub.omgcloud.ru/${value}`;
+        streisandLink.textContent = `https://q1ab.github.io/redirect/url.html?config=streisand://import/https://sub.omgcloud.ru/${value}`;
+      } else {
+        v2rayLink.textContent = '';
+        streisandLink.textContent = '';
+      }
+    });
+
+    function copyToClipboard(elementId) {
+      const text = document.getElementById(elementId).textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Скопировано в буфер обмена');
+      }, () => {
+        alert('Ошибка копирования');
+      });
+    }
+  </script>
+</body>
+</html>
